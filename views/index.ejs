@@ -1,0 +1,29 @@
+
+
+<%- include("./partials/header.ejs") %>
+<main>
+    <div class="box" id="heading">
+        <h1>
+            <%= date %>
+        </h1>
+    </div>
+    <form action="/delete" method="post" id="myForm">
+        <div class="box">
+            <% items.forEach((item) => { %>
+                <div class="item">
+                    <input type="checkbox" name="checkbox" value="<%= item._id %>" onclick="this.form.submit()">
+                    <p>
+                        <%= item.item %>
+                    </p>
+                </div>
+            <% }) %>
+        </div>
+    </form>
+    <div class="box">
+        <form class="item" action="/" method="post">
+            <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+            <button type="submit" name="list">+</button>
+        </form>
+    </div>
+</main>
+<%- include("./partials/footer.ejs") %>
